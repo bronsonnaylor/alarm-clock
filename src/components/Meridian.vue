@@ -1,18 +1,17 @@
 <template>
     <span>
-        <img class="digit" src="../assets/7seg-null.png">
-
+        <img class="meridian" src="../assets/Meridian-AM.png">
     </span>
 </template>
 
 <script>
 export default {
-  name: 'Digit',
+  name: 'Meridian',
 }
 </script>
 
 <style>
-    .digit {
+    .meridian {
         height: 10rem;
     }
 </style>

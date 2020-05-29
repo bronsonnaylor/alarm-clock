@@ -1,18 +1,17 @@
 <template>
     <span>
-        <img class="digit" src="../assets/7seg-null.png">
-
+        <img class="colon" src="../assets/Colon-off.png">
     </span>
 </template>
 
 <script>
 export default {
-  name: 'Digit',
+  name: 'Colon',
 }
 </script>
 
 <style>
-    .digit {
+    .colon {
         height: 10rem;
     }
 </style>
