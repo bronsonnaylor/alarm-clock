@@ -2,22 +2,18 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <div>
-      <Meridian/><Digit/><Digit/><Colon/><Digit/><Digit/>
+      <DigitalClock/>
     </div>
   </div>
 </template>
 
 <script>
-import Digit from './components/Digit.vue'
-import Colon from './components/Colon.vue'
-import Meridian from './components/Meridian.vue'
+import DigitalClock from './components/DigitalClock.vue'
 
 export default {
   name: 'App',
   components: {
-    Digit,
-    Colon,
-    Meridian
+    DigitalClock
   }
 }
 </script>
