@@ -1,13 +1,29 @@
 <template>
     <span>
-        <img class="digit" src="../assets/7seg-null.png">
+        <img class="digit" :src="source">
 
     </span>
 </template>
 
 <script>
 export default {
-  name: 'Digit',
+    name: 'Digit',
+    data: function () {
+        return {
+            source: require("@/assets/7seg-null.png")
+        }
+    },
+    props: {
+        timeDigit: Number
+    },
+    methods: {
+        defineDigit: function (digit) {
+            this.source = require(`@/assets/7seg-${digit}.png`)
+        }
+    },
+    mounted: function () {
+        this.defineDigit(this.timeDigit)
+    }
 }
 </script>
 
