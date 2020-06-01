@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Meridian/>
+        <Meridian v-bind:meridian="AM"/>
         <Digit v-bind:timeDigit="hour1"/>
         <Digit v-bind:timeDigit="hour2"/>
         <Colon/>

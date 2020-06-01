@@ -1,7 +1,6 @@
 <template>
     <span>
         <img class="digit" :src="source">
-
     </span>
 </template>
 
