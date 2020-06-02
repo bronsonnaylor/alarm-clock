@@ -13,6 +13,7 @@
 import Digit from './Digit.vue'
 import Colon from './Colon.vue'
 import Meridian from './Meridian.vue'
+import moment from 'moment'
 
 export default {
   name: 'DigitalClock',
@@ -32,23 +33,22 @@ export default {
   },
   methods: {
     timeSplit: function () {
-      let dateTime = new Date()
-      let dateTimeString = dateTime.toString()
-      let dateTimeArray = dateTimeString.split(" ")
-      let currentTimeSplit = dateTimeArray[4].split(":")
-      let hour = currentTimeSplit[0]
-      let standardHour = hour % 12
-      if (hour > standardHour) {
+      let dateTime = moment(Date.now())
+
+      if (dateTime.format('a') == 'pm') {
         this.AM = false
       }
-      let minute = currentTimeSplit[1]
-      if (standardHour < 10) {
+
+      let hour = dateTime.format('hh')
+      if (hour < 10) {
         this.hour1 = 0
-        this.hour2 = standardHour
+        this.hour2 = hour
       } else {
         this.hour1 = 1
-        this.hour2 = standardHour - 10
+        this.hour2 = hour - 10
       }
+
+      let minute = dateTime.format('mm')
       this.minute1 = Math.floor(minute / 10)
       this.minute2 = minute % 10
     },
@@ -64,8 +64,6 @@ export default {
   },
   created: function () {
     this.timeSplit()
-  },
-  mounted: function () {
     this.updateTime()
   }
 }
