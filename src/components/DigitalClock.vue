@@ -1,11 +1,11 @@
 <template>
     <div>
         <Meridian v-bind:meridian="AM"/>
-        <Digit v-bind:timeDigit="hour1"/>
-        <Digit v-bind:timeDigit="hour2"/>
+        <Digit v-bind:timeDigit="hour1" ref="hour1"/>
+        <Digit v-bind:timeDigit="hour2" ref="hour2"/>
         <Colon/>
-        <Digit v-bind:timeDigit="minute1"/>
-        <Digit v-bind:timeDigit="minute2"/>
+        <Digit v-bind:timeDigit="minute1" ref="minute1"/>
+        <Digit v-bind:timeDigit="minute2" ref="minute2"/>
     </div>
 </template>
 
@@ -51,10 +51,22 @@ export default {
       }
       this.minute1 = Math.floor(minute / 10)
       this.minute2 = minute % 10
+    },
+    updateTime: function () {
+      setInterval(()=>{
+        this.timeSplit()
+        this.$refs.hour1.defineDigit(this.hour1)
+        this.$refs.hour2.defineDigit(this.hour2)
+        this.$refs.minute1.defineDigit(this.minute1)
+        this.$refs.minute2.defineDigit(this.minute2)
+      }, 1000)
     }
   },
   created: function () {
     this.timeSplit()
+  },
+  mounted: function () {
+    this.updateTime()
   }
 }
 </script>

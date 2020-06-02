@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="MVP-logo" src="./assets/MVP-logo.png">
     <div>
       <DigitalClock/>
     </div>

@@ -17,7 +17,6 @@ export default {
   },
   methods: {
       defineMeridian: function (meridian) {
-          console.log("meridian", meridian)
           let AMPM = null
           if (meridian == true) {
               AMPM = "AM"
