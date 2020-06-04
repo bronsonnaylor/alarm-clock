@@ -1,11 +1,37 @@
 <template>
     <div>
-        <Meridian v-bind:meridian="AM"/>
-        <Digit v-bind:timeDigit="0"/>
-        <Digit v-bind:timeDigit="0"/>
-        <Colon/>
-        <Digit v-bind:timeDigit="0"/>
-        <Digit v-bind:timeDigit="0"/>
+        <div class="clock">
+            <span class="meridian">
+                <img class="arrow" src="../assets/Arrow-Up.png"/>
+                <Meridian v-bind:meridian="AM"/>
+                <img class="arrow" src="../assets/Arrow-Down.png"/>
+            </span>
+            <span class="meridian">
+                <img class="arrow" src="../assets/Arrow-Up.png"/>
+                <Digit v-bind:timeDigit="0"/>
+                <img class="arrow" src="../assets/Arrow-Down.png"/>
+            </span>
+            <span class="meridian">
+                <img class="arrow" src="../assets/Arrow-Up.png"/>
+                <Digit v-bind:timeDigit="0"/>
+                <img class="arrow" src="../assets/Arrow-Down.png"/>
+            </span>
+            <span class="meridian">
+                <Colon/>
+            </span>
+            <span class="meridian">
+                <img class="arrow" src="../assets/Arrow-Up.png"/>
+                <Digit v-bind:timeDigit="0"/>
+                <img class="arrow" src="../assets/Arrow-Down.png"/>
+            </span>
+            <span class="meridian">
+                <img class="arrow" src="../assets/Arrow-Up.png"/>
+                <Digit v-bind:timeDigit="0"/>
+                <img class="arrow" src="../assets/Arrow-Down.png"/>
+            </span>
+        </div>
+        <div>
+        </div>
     </div>
 </template>
 
@@ -28,3 +54,23 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .arrow {
+        height: 4rem;
+    }
+    .meridian {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .digit {
+        display: flex;
+        flex-direction: column;
+    }
+    .clock {
+        display: flex;
+        flex-direction: row;
+        margin-top: 100px
+    }
+</style>
