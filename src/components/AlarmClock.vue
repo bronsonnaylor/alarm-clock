@@ -1,30 +1,30 @@
 <template>
     <div>
         <div class="clock">
-            <span class="meridian">
+            <span class="section">
                 <img class="arrow" src="../assets/Arrow-Up.png"/>
                 <Meridian v-bind:meridian="AM"/>
                 <img class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
-            <span class="meridian">
+            <span class="section">
                 <img class="arrow" src="../assets/Arrow-Up.png"/>
                 <Digit v-bind:timeDigit="0"/>
                 <img class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
-            <span class="meridian">
+            <span class="section">
                 <img class="arrow" src="../assets/Arrow-Up.png"/>
                 <Digit v-bind:timeDigit="0"/>
                 <img class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
-            <span class="meridian">
+            <span class="section">
                 <Colon/>
             </span>
-            <span class="meridian">
+            <span class="section">
                 <img class="arrow" src="../assets/Arrow-Up.png"/>
                 <Digit v-bind:timeDigit="0"/>
                 <img class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
-            <span class="meridian">
+            <span class="section">
                 <img class="arrow" src="../assets/Arrow-Up.png"/>
                 <Digit v-bind:timeDigit="0"/>
                 <img class="arrow" src="../assets/Arrow-Down.png"/>
@@ -59,7 +59,7 @@ export default {
     .arrow {
         height: 4rem;
     }
-    .meridian {
+    .section {
         display: flex;
         flex-direction: column;
         justify-content: center;
