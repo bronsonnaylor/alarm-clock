@@ -3,17 +3,20 @@
     <img alt="MVP-logo" src="./assets/MVP-logo.png">
     <div>
       <DigitalClock/>
+      <AlarmClock/>
     </div>
   </div>
 </template>
 
 <script>
 import DigitalClock from './components/DigitalClock.vue'
+import AlarmClock from './components/AlarmClock.vue'
 
 export default {
   name: 'App',
   components: {
-    DigitalClock
+    DigitalClock,
+    AlarmClock
   }
 }
 </script>

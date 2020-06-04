@@ -39,7 +39,7 @@ export default {
         this.AM = false
       }
 
-      let hour = dateTime.format('hh')
+      let hour = parseInt(dateTime.format('hh'))
       if (hour < 10) {
         this.hour1 = 0
         this.hour2 = hour

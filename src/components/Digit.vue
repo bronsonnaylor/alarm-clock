@@ -9,7 +9,7 @@ export default {
     name: 'Digit',
     data: function () {
         return {
-            source: require("@/assets/7seg-null.png")
+            source: require("../assets/7seg-null.png")
         }
     },
     props: {
@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         defineDigit: function (digit) {
-            this.source = require(`@/assets/7seg-${digit}.png`)
+            this.source = require(`../assets/7seg-${digit}.png`)
         }
     },
     mounted: function () {
