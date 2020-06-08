@@ -4,7 +4,7 @@
             <span class="section">
                 <img v-on:click="meridianSwitch" class="arrow" src="../assets/Arrow-Up.png"/>
                 <Meridian v-bind:meridian="true" ref="meridian"/>
-                <img class="arrow" src="../assets/Arrow-Down.png"/>
+                <img v-on:click="meridianSwitch" class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
             <span class="section">
                 <img v-on:click="digitSwitchUp(0)" class="arrow" src="../assets/Arrow-Up.png"/>
@@ -50,7 +50,8 @@ export default {
     data: function() {
         return {
             AMPM: true,
-            digit: [0, 0, 0, 0]
+            digit: [0, 0, 0, 0],
+            alarmAudio: new Audio(require('../assets/AlienAlarm.mp3'))
         }
     },
     methods: {
@@ -68,6 +69,16 @@ export default {
                 this.digit[refNum] = 9
             }
             this.$refs[`digit${refNum}`].defineDigit(this.digit[refNum])
+        },
+        getTime: function () {
+            return `${this.AMPM}${this.digit[0]}${this.digit[1]}${this.digit[2]}${this.digit[3]}`
+        },
+        startAlarm: function () {
+            this.alarmAudio.play()
+        },
+        stopAlarm: function () {
+            this.alarmAudio.pause()
+            this.alarmAudio.currentTime = 0
         }
     }
 }
@@ -89,6 +100,6 @@ export default {
     .clock {
         display: flex;
         flex-direction: row;
-        margin-top: 100px
+        justify-content: center;
     }
 </style>

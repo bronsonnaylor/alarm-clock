@@ -60,6 +60,9 @@ export default {
         this.$refs.minute1.defineDigit(this.minute1)
         this.$refs.minute2.defineDigit(this.minute2)
       }, 1000)
+    },
+    getTime: function () {
+      return `${this.AM}${this.hour1}${this.hour2}${this.minute1}${this.minute2}`
     }
   },
   created: function () {
