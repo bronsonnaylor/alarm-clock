@@ -54,11 +54,15 @@ export default {
     },
     updateTime: function () {
       setInterval(()=>{
+        let beforeMinute = this.minute2
         this.timeSplit()
-        this.$refs.hour1.defineDigit(this.hour1)
-        this.$refs.hour2.defineDigit(this.hour2)
-        this.$refs.minute1.defineDigit(this.minute1)
-        this.$refs.minute2.defineDigit(this.minute2)
+        if (beforeMinute != this.minute2) {
+          this.$emit('time-changed')
+          this.$refs.hour1.defineDigit(this.hour1)
+          this.$refs.hour2.defineDigit(this.hour2)
+          this.$refs.minute1.defineDigit(this.minute1)
+          this.$refs.minute2.defineDigit(this.minute2)
+        }
       }, 1000)
     },
     getTime: function () {

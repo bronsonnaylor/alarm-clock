@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="MVP-logo" src="./assets/MVP-logo.png">
     <div>
-      <DigitalClock ref="instanceDigitalClock"/>
+      <DigitalClock v-on:time-changed="compareTime" ref="instanceDigitalClock"/>
       <AlarmClock ref="instanceAlarmClock"/>
     </div>
   </div>
@@ -20,13 +20,9 @@ export default {
   },
   methods: {
     compareTime: function () {
-      setInterval( () => {
-        if (this.$refs.instanceDigitalClock.getTime() === this.$refs.instanceAlarmClock.getTime()) {
-          this.$refs.instanceAlarmClock.startAlarm()
-        } else {
-          this.$refs.instanceAlarmClock.stopAlarm()
-        }
-      }, 1000)
+      if (this.$refs.instanceDigitalClock.getTime() === this.$refs.instanceAlarmClock.getTime()) {
+        this.$refs.instanceAlarmClock.startAlarm()
+      }
     }
   },
   mounted: function () {
