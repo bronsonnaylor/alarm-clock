@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="$emit('snooze')" class="snooze" type="button">Snooze</button>
+        <button @click="$emit('stop')" class="stop" type="button">Stop</button>
     </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style>
-    .snooze {
+    .stop {
         padding: 0.5em 1em;
         background-color: #D1D3D4;
         color: #404040;

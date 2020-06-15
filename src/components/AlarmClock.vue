@@ -31,7 +31,7 @@
             </span>
         </div>
         <div>
-            <Snooze v-on:snooze='stopAlarm'/>
+            <Stop v-on:stop='stopAlarm'/>
         </div>
     </div>
 </template>
@@ -40,7 +40,7 @@
 import Digit from './Digit.vue'
 import Colon from './Colon.vue'
 import Meridian from './Meridian.vue'
-import Snooze from './Snooze.vue'
+import Stop from './Stop.vue'
 
 export default {
     name: 'AlarmClock',
@@ -48,7 +48,7 @@ export default {
         Digit,
         Colon,
         Meridian,
-        Snooze
+        Stop
     },
     data: function() {
         return {
