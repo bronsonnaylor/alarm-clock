@@ -3,7 +3,7 @@
     <img alt="MVP-logo" src="./assets/MVP-logo.png">
     <div>
       <DigitalClock v-on:time-changed="compareTime" ref="instanceDigitalClock"/>
-      <AlarmClock ref="instanceAlarmClock"/>
+      <AlarmClock v-on:time-changed="compareTime" ref="instanceAlarmClock"/>
     </div>
   </div>
 </template>

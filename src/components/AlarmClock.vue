@@ -54,17 +54,20 @@ export default {
         return {
             AMPM: true,
             digit: [0, 0, 0, 0],
-            alarmAudio: new Audio(require('../assets/AlienAlarm.mp3'))
+            alarmAudio: new Audio(require('../assets/AlienAlarm.mp3')),
+            timeout: null
         }
     },
     methods: {
         meridianSwitch: function () {
             this.AMPM = !this.AMPM
             this.$refs.meridian.defineMeridian(this.AMPM)
+            this.$emit('time-changed')
         },
         digitSwitchUp: function (refNum) {
             this.digit[refNum] = (this.digit[refNum] + 1) % 10
             this.$refs[`digit${refNum}`].defineDigit(this.digit[refNum])
+            this.$emit('time-changed')
         },
         digitSwitchDown: function (refNum) {
             this.digit[refNum]--
@@ -72,16 +75,24 @@ export default {
                 this.digit[refNum] = 9
             }
             this.$refs[`digit${refNum}`].defineDigit(this.digit[refNum])
+            this.$emit('time-changed')
         },
         getTime: function () {
             return `${this.AMPM}${this.digit[0]}${this.digit[1]}${this.digit[2]}${this.digit[3]}`
         },
         startAlarm: function () {
             this.alarmAudio.play()
+            this.alarmAudio.loop = true
+            if (this.timeout) {
+                clearTimeout(this.timeout)
+                this.timeout = null
+            }
+            this.timeout = setTimeout(this.stopAlarm, 600000)
         },
         stopAlarm: function () {
             this.alarmAudio.pause()
             this.alarmAudio.currentTime = 0
+            clearTimeout(this.timeout)
         }
     }
 }
