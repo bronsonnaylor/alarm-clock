@@ -97,7 +97,7 @@ export default {
         },
         snoozeAlarm: function () {
             this.stopAlarm()
-            setTimeout(this.startAlarm, 6000)
+            setTimeout(this.startAlarm, 600000)
         }
     }
 }
