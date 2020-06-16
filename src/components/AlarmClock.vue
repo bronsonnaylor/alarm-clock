@@ -30,8 +30,9 @@
                 <img v-on:click="digitSwitchDown(3)" class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
         </div>
-        <div>
-            <Stop v-on:stop='stopAlarm'/>
+        <div class="buttons">
+            <Stop v-bind:buttonName="'Stop'" v-on:stop='stopAlarm'/>
+            <Stop v-bind:buttonName="'Snooze'" v-on:stop='snoozeAlarm'/>
         </div>
     </div>
 </template>
@@ -93,6 +94,10 @@ export default {
             this.alarmAudio.pause()
             this.alarmAudio.currentTime = 0
             clearTimeout(this.timeout)
+        },
+        snoozeAlarm: function () {
+            this.stopAlarm()
+            setTimeout(this.startAlarm, 6000)
         }
     }
 }
@@ -112,6 +117,11 @@ export default {
         flex-direction: column;
     }
     .clock {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .buttons {
         display: flex;
         flex-direction: row;
         justify-content: center;

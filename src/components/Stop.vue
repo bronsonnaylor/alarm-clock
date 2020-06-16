@@ -1,14 +1,14 @@
 <template>
     <div>
-        <button @click="$emit('stop')" class="stop" type="button">Stop</button>
+        <button @click="$emit('stop')" class="stop" type="button">{{ buttonName }}</button>
     </div>
 </template>
 
 <script>
 export default {
     name: 'Digit',
-    methods: {
-        
+    props: {
+        buttonName: String
     }
 }
 </script>
