@@ -27,7 +27,14 @@ export default {
 </script>
 
 <style>
-    .digit {
-        height: 10rem;
+    @media (max-width: 510px) {
+        .digit {
+            height: 6rem;
+        }
+    }
+    @media (min-width: 511px) {
+        .digit {
+            height: 10rem;
+        }
     }
 </style>

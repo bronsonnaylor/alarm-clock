@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="digital-clock">
         <Meridian v-bind:meridian="AM"/>
         <Digit v-bind:timeDigit="hour1" ref="hour1"/>
         <Digit v-bind:timeDigit="hour2" ref="hour2"/>
@@ -77,4 +77,8 @@ export default {
 </script>
 
 <style>
+  .digital-clock {
+    display: flex;
+    justify-content: center;
+  }
 </style>

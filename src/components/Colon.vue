@@ -33,7 +33,14 @@ export default {
 </script>
 
 <style>
-    .colon {
-        height: 10rem;
+    @media (max-width: 510px) {
+        .colon {
+            height: 6rem;
+        }
+    }
+    @media (min-width: 511px) {
+        .colon {
+            height: 10rem;
+        }
     }
 </style>

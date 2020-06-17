@@ -23,4 +23,26 @@ export default {
         text-outline: 3px black;
         border-radius: 2em;
     }
+    @media (max-width: 510px) {
+        .stop {
+            padding: 0.5em 1em;
+            background-color: #D1D3D4;
+            color: #404040;
+            font-size: 2em;
+            font-family: 'Fredoka One', cursive;
+            text-outline: 3px black;
+            border-radius: 2em;
+        }
+    }
+    @media (min-width: 511px) {
+        .stop {
+            padding: 0.5em 1em;
+            background-color: #D1D3D4;
+            color: #404040;
+            font-size: 3em;
+            font-family: 'Fredoka One', cursive;
+            text-outline: 3px black;
+            border-radius: 2em;
+        }
+    }
 </style>

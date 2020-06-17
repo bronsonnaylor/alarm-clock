@@ -34,7 +34,14 @@ export default {
 </script>
 
 <style>
-    .meridian {
-        height: 10rem;
+    @media (max-width: 510px) {
+        .meridian {
+            height: 6rem;
+        }
+    }
+    @media (min-width: 511px) {
+        .meridian {
+            height: 10rem;
+        }
     }
 </style>

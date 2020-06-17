@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="MVP-logo" src="./assets/MVP-logo.png">
+    <img class="image" alt="MVP-logo" src="./assets/MVP-logo.png">
     <div>
       <DigitalClock v-on:time-changed="compareTime" ref="instanceDigitalClock"/>
       <AlarmClock v-on:time-changed="compareTime" ref="instanceAlarmClock"/>
@@ -32,15 +32,25 @@ export default {
 </script>
 
 <style>
-body {
-  background-color: #303030;
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @media (max-width: 510px) {
+      .image {
+          height: 6rem;
+      }
+  }
+  @media (min-width: 511px) {
+      .image {
+          height: 10rem;
+      }
+  }
+  body {
+    background-color: #303030;
+  }
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>

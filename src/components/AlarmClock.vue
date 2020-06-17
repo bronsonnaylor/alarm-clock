@@ -104,8 +104,15 @@ export default {
 </script>
 
 <style scoped>
-    .arrow {
-        height: 4rem;
+    @media (max-width: 510px) {
+        .arrow {
+            height: 3rem;
+        }
+    }
+    @media (min-width: 511px) {
+        .arrow {
+            height: 5rem;
+        }
     }
     .section {
         display: flex;
