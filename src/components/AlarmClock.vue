@@ -7,27 +7,27 @@
                 <img v-on:click="meridianSwitch" class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
             <span class="section">
-                <img v-on:click="digitSwitchUp(0)" class="arrow" src="../assets/Arrow-Up.png"/>
+                <img v-on:click="digitSwitch(0, 1)" class="arrow" src="../assets/Arrow-Up.png"/>
                 <Digit v-bind:timeDigit="0" ref="digit0"/>
-                <img v-on:click="digitSwitchDown(0)" class="arrow" src="../assets/Arrow-Down.png"/>
+                <img v-on:click="digitSwitch(0, 0)" class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
             <span class="section">
-                <img v-on:click="digitSwitchUp(1)" class="arrow" src="../assets/Arrow-Up.png"/>
+                <img v-on:click="digitSwitch(1, 1)" class="arrow" src="../assets/Arrow-Up.png"/>
                 <Digit v-bind:timeDigit="0" ref="digit1"/>
-                <img v-on:click="digitSwitchDown(1)" class="arrow" src="../assets/Arrow-Down.png"/>
+                <img v-on:click="digitSwitch(1, 0)" class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
             <span class="section">
                 <Colon/>
             </span>
             <span class="section">
-                <img v-on:click="digitSwitchUp(2)" class="arrow" src="../assets/Arrow-Up.png"/>
+                <img v-on:click="digitSwitch(2, 1)" class="arrow" src="../assets/Arrow-Up.png"/>
                 <Digit v-bind:timeDigit="0" ref="digit2"/>
-                <img v-on:click="digitSwitchDown(2)" class="arrow" src="../assets/Arrow-Down.png"/>
+                <img v-on:click="digitSwitch(2, 0)" class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
             <span class="section">
-                <img v-on:click="digitSwitchUp(3)" class="arrow" src="../assets/Arrow-Up.png"/>
+                <img v-on:click="digitSwitch(3, 1)" class="arrow" src="../assets/Arrow-Up.png"/>
                 <Digit v-bind:timeDigit="0" ref="digit3"/>
-                <img v-on:click="digitSwitchDown(3)" class="arrow" src="../assets/Arrow-Down.png"/>
+                <img v-on:click="digitSwitch(3, 0)" class="arrow" src="../assets/Arrow-Down.png"/>
             </span>
         </div>
         <div class="buttons">
@@ -55,6 +55,7 @@ export default {
         return {
             AMPM: true,
             digit: [0, 0, 0, 0],
+            limit: [2, 3, 6, 10],
             alarmAudio: new Audio(require('../assets/AlienAlarm.mp3')),
             timeout: null
         }
@@ -65,18 +66,21 @@ export default {
             this.$refs.meridian.defineMeridian(this.AMPM)
             this.$emit('time-changed')
         },
-        digitSwitchUp: function (refNum) {
-            this.digit[refNum] = (this.digit[refNum] + 1) % 10
-            this.$refs[`digit${refNum}`].defineDigit(this.digit[refNum])
-            this.$emit('time-changed')
-        },
-        digitSwitchDown: function (refNum) {
-            this.digit[refNum]--
-            if (this.digit[refNum] < 0) {
-                this.digit[refNum] = 9
+        digitSwitch: function (refNum, direction) {
+            if (direction === 1) {
+                this.digit[refNum] = (this.digit[refNum] + 1) % this.limit[refNum]
+                this.$refs[`digit${refNum}`].defineDigit(this.digit[refNum])
+                this.$emit('time-changed')
             }
-            this.$refs[`digit${refNum}`].defineDigit(this.digit[refNum])
-            this.$emit('time-changed')
+            if (direction === 0) {
+                if (this.digit[refNum] === 0) {
+                    this.digit[refNum] = this.limit[refNum] - 1
+                } else {
+                    this.digit[refNum]--
+                }
+                this.$refs[`digit${refNum}`].defineDigit(this.digit[refNum])
+                this.$emit('time-changed')
+            }
         },
         getTime: function () {
             return `${this.AMPM}${this.digit[0]}${this.digit[1]}${this.digit[2]}${this.digit[3]}`
